@@ -54,14 +54,14 @@ const years = []
 function getYears(anArray, callback) {
     
   const year = callback(anArray);
-  year.map((date, index) => {
+  year.map((date) => {
         years.push(date.Year)
     }
     )
     return years
  }
 getYears(fifaData, getFinals);
-console.log(years)
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher-order function getWinners to do the following:  
@@ -70,10 +70,30 @@ Use the higher-order function getWinners to do the following:
 3. Determines the winner (home or away) of each `finals` game. 
 💡 HINT: Don't worry about ties for now (Please see the README file for info on ties for a stretch goal.)
 4. Returns the names of all winning countries in an array called `winners` */ 
-
-function getWinners(/* code here */) {
-    /* code here */
+console.log('task 4')
+const winners = []
+function getWinners(anArray, callback) {
+    const win = callback(anArray);
+    // let homeScores = win.filter((homeScore) => homeScore['Home Team Goals'])
+    // let awayScores = win.filter((awayScore) => awayScore['Away Team Goals'])
+    // for(let i = 0; i < homeScores.length; i++){
+    //     if(homeScores[i]>awayScores[i]) {
+    //         winners.push(homeScores['Home Team Name'])
+    //     } else {
+    //         winners.push(homeScores['Away Team Name'])
+    //     }
+    // }   
+    for(let i = 0; i < win.length; i++){
+        if(win[i]['Home Team Goals']>win[i]['Away Team Goals']) {
+            winners.push(win[i]['Home Team Name'])
+        } else {
+            winners.push(win[i]['Away Team Name'])
+        }
+    } 
+    return winners
 }
+getWinners(fifaData, getFinals)
+console.log(winners)
 
 
 
