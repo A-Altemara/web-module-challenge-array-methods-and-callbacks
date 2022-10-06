@@ -74,15 +74,6 @@ console.log('task 4')
 const winners = []
 function getWinners(anArray, callback) {
     const win = callback(anArray);
-    // let homeScores = win.filter((homeScore) => homeScore['Home Team Goals'])
-    // let awayScores = win.filter((awayScore) => awayScore['Away Team Goals'])
-    // for(let i = 0; i < homeScores.length; i++){
-    //     if(homeScores[i]>awayScores[i]) {
-    //         winners.push(homeScores['Home Team Name'])
-    //     } else {
-    //         winners.push(homeScores['Away Team Name'])
-    //     }
-    // }   
     for(let i = 0; i < win.length; i++){
         if(win[i]['Home Team Goals']>win[i]['Away Team Goals']) {
             winners.push(win[i]['Home Team Name'])
@@ -93,7 +84,7 @@ function getWinners(anArray, callback) {
     return winners
 }
 getWinners(fifaData, getFinals)
-console.log(winners)
+// console.log(winners)
 
 
 
@@ -108,9 +99,18 @@ Use the higher-order function getWinnersByYear to do the following:
 💡 HINT: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(/* code here */) {
-    /* code here */
+let winnerArray = []
+function getWinnersByYear(anArray, finals, years, winners) {
+    finals(anArray) //Return an array of objects with the data of the teams that made it to the final stage
+    const date = years(anArray, finals) // Return an array called years containing all of the years in the getFinals data set*/
+    const victor = winners(anArray, finals)//Returns the names of all winning countries in an array called `winners` */ 
+    for(let i = 0; i < victor.length; i++){
+        winnerArray.push(`In ${date[i]}, ${victor[i]} won the world cup!`)
+    }
+    
+    return winnerArray
 }
+getWinnersByYear(fifaData, getFinals, getYears, getWinners)
 
 
 
